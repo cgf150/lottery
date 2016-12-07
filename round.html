@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		body { padding: 0; margin: 0; background: #C7EDCC }
+		.round { width: 268px; height: 268px; margin: 20px auto; text-align: center; line-height: 268px; background: url(lottery2.png) no-repeat 0 0; border-radius: 50%; border:1px solid #ccc; transition:transform 4.0s ease; }
+	</style>
+	</style>
+</head>
+<body>
+	<div class="round" id="round">click me !</div>
+
+	<!-- <script>
+		var iDeg=0,timer=null,iTar=3600,offset=4,mount=72;
+		iTar+=(offset*mount);
+	
+		var $=function (sId) {
+			return document.getElementById(sId);
+		}
+	
+		$('round').onclick=function(){
+			if(!this.isClicked){
+				this.isClicked=true;
+				fnRotate(this);
+			}
+		}
+	
+		function fnRotate(obj){
+			obj.style.WebkitTransition='transform 4.0s';
+			obj.style.transition='transform 4.0s';
+			var iNum=fnMax(1,10);
+			if(iDeg>500){
+				iNum=fnMax(10,30);
+			}
+			iDeg+=iNum;
+			cssTrans.call(obj,iDeg);
+			if(iDeg>iTar){
+				iDeg=iTar;
+				cssTrans.call(obj,iDeg,function(obj){
+					fnReset(obj);
+				});
+				return;
+			}
+			timer=setTimeout(function(){
+				fnRotate(obj);
+			},20);
+		}
+	
+		function fnMax(min,max){
+			return Math.floor(Math.random()*(max-min)+1)+min;
+		}
+	
+		function fnReset(obj){
+			console.log('afds');
+			obj.style.WebkitTransition='none';
+			obj.style.transition='none';
+			var timer2=setTimeout(function(){
+				cssTrans.call(obj,0);
+				clearTimeout(timer2);
+				timer2=null;
+				obj.isClicked=false;
+			},20);
+		}
+	
+		function cssTrans(iDeg,fn){
+			clearTimeout(timer);
+	
+			if(fn){
+				console.log(fn);
+				$('round').addEventListener('transitionEnd',function(){
+					end.call(this,fn);
+				},false);
+	
+				$('round').addEventListener('webkitTransitionEnd',function(){
+					end.call(this,fn);
+				},false);
+			}
+	
+			this.style.WebkitTransform="rotate("+(iDeg)+"deg)";
+			this.style.transform="rotate("+(iDeg)+"deg)";
+		}
+	
+		function end(fn){
+			fn($('round'));
+		}
+	</script> -->
+
+	<script src="lottery.js"></script>
+	<script>
+		var oRound=document.getElementById('round')
+		var lottery=new Lottery();
+		lottery.init({
+			tar:oRound,
+			num:'5',
+			trick:'3',
+			fn:function(obj){
+				alert(obj.prize)
+			}
+		});
+	</script>
+</body>
+</html>
